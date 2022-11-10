@@ -1,18 +1,19 @@
 import React from 'react'
 import styles from './productItem.module.css'
+//will receive the product as a prop
 
-const ProductItem = () => {
+const ProductItem = ({product}) => {
   return (
     <div className={styles.item}>
-        <p>MacBook</p>
-        <p>$1000</p>
-        <p>5200 units</p>
+        <p>{product.name}</p>
+        <p>{product.price}</p>
+        <p>{product.stock} units</p>
         <div className={styles.options}>
             <button className={styles.buttons}>
-              <span class="material-icons">edit</span>
+              <span className="material-icons">edit</span>
             </button>
             <button className={styles.buttons}>
-              <span class="material-icons">delete</span>
+              <span className="material-icons">delete</span>
             </button>
         </div>
     </div>
