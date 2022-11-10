@@ -26,12 +26,14 @@
 .buttons{
     padding: 10px;
     border: 1px solid black;
+    color: black;
     border-radius: 5px;
     background-color: white;
     cursor: pointer;
     margin: 0px 5px;
     font-weight: bold;
     font-size: 17px;
+    text-decoration: none;
     transition: 0.3s;
 }
 .buttons:hover{

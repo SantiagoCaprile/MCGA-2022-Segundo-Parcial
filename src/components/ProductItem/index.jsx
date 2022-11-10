@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './productItem.module.css'
-//will receive the product as a prop
+import { Link } from 'react-router-dom'
 
 const ProductItem = ({product}) => {
   return (
@@ -9,9 +9,7 @@ const ProductItem = ({product}) => {
         <p>{product.price}</p>
         <p>{product.stock} units</p>
         <div className={styles.options}>
-            <button className={styles.buttons}>
-              <span className="material-icons">edit</span>
-            </button>
+            <Link to={`/edit/${product._id}`} className= {styles.buttons + " material-icons"}>edit</Link>
             <button className={styles.buttons}>
               <span className="material-icons">delete</span>
             </button>

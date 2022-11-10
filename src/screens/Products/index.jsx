@@ -4,6 +4,7 @@ import ProductItem from '../../components/ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { saveProducts } from '../../store/products/thunks'
+import { Link } from 'react-router-dom'
 
 
 const Products = () => {
@@ -27,7 +28,7 @@ const Products = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h1 className={styles.title}>Products</h1>
-                <button className={styles.buttons}>Add Product</button>
+                <Link to={"/new"} className={styles.buttons}>Add Product </Link>
             </div>
             <div className={styles.list}>
                 {
