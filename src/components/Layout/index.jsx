@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 const Layout = ({children}) => {
   return (
     <div>
+        <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+        </head>
         <nav className={styles.header} >
             <div className={styles.options}>
                 <Link to={'/'} className={styles.buttons}>Home</Link>

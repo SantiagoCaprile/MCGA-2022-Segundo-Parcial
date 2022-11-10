@@ -8,8 +8,12 @@ const ProductItem = () => {
         <p>$1000</p>
         <p>5200 units</p>
         <div className={styles.options}>
-            <button className={styles.buttons}>Edit</button>
-            <button className={styles.buttons}>X</button>
+            <button className={styles.buttons}>
+              <span class="material-icons">edit</span>
+            </button>
+            <button className={styles.buttons}>
+              <span class="material-icons">delete</span>
+            </button>
         </div>
     </div>
   );
