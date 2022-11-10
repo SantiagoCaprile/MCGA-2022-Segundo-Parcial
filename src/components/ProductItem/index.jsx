@@ -10,9 +10,7 @@ const ProductItem = ({product}) => {
         <p>{product.stock} units</p>
         <div className={styles.options}>
             <Link to={`/edit/${product._id}`} className= {styles.buttons + " material-icons"}>edit</Link>
-            <button className={styles.buttons}>
-              <span className="material-icons">delete</span>
-            </button>
+            <button className={styles.buttons + " material-icons"}>delete</button>
         </div>
     </div>
   );
