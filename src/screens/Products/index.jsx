@@ -18,7 +18,7 @@ const Products = () => {
     if (productsSelector.isLoading) {
         return(
             <div className={styles.container}>
-                <h1 className={styles.loading}>Loading...</h1>
+                <span className={styles.loader}></span>
             </div>
         )
     }
