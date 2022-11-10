@@ -15,7 +15,7 @@ const Layout = ({children}) => {
             {children}
         </div>
         <footer className={styles.footer}>
-            <p>Santiago Caprile</p>
+            <p>Universidad Abierta Interamericana</p>
         </footer>
     </div>
   );

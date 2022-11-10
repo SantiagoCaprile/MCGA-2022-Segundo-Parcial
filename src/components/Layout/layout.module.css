@@ -3,22 +3,27 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 7vh;
-    background-color: bisque;
+    min-height: 7vh;
+    height: 7%;
+    background-color: yellow;
 }
 
 .buttons{
-    background-color: blue;
-    color: white;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     text-decoration: none;
+    transition: 0.3s;
 }
 .buttons:hover{
-    background-color: white;
-    color: blue;
-    border: 1px solid blue;
+    background-color: rgb(38, 36, 36);
+    color: white;
+    border: 1px solid black;
+    transition: 0.3s;
 }
 
 .options {
@@ -29,15 +34,15 @@
 }
 
 .content {
-    background-color: rgb(183, 183, 183);
-    height: 90vh;
+    background-color: #282c34;
+    min-height: 90vh;
 }
 
 .footer {
-    background-color: rgb(92, 101, 254);
+    background-color: yellow;
     height: 3vh;
     text-align: center;
-    color: white;
+    color: black;
     font-weight: bold;
     text-decoration: underline;
     font-size: 20px;

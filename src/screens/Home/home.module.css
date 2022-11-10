@@ -3,10 +3,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 100%;
-  background-color: #282c34;
   color: white;
-  font-size: 30px
+  font-size: 30px;
+  height: 90vh;
 }
 
 .title {
