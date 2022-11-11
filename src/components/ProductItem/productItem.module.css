@@ -33,3 +33,8 @@
     color: white;
     transition: 0.3s;
 }
+
+.deleted{
+    text-decoration: line-through;
+    color: red;
+}
