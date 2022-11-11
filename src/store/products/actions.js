@@ -1,4 +1,12 @@
-import { SAVE_DATA_FULLFILLED, SAVE_DATA_LOADING, SAVE_DATA_REJECTED, DELETE_DATA } from './types';
+import {
+  SAVE_DATA_FULLFILLED,
+  SAVE_DATA_LOADING,
+  SAVE_DATA_REJECTED,
+  ADD_PRODUCT_FULLFILLED,
+  ADD_PRODUCT_LOADING,
+  ADD_PRODUCT_REJECTED,
+  DELETE_DATA,
+} from "./types";
 
 export const saveData = (data) => {
   return {
@@ -7,13 +15,12 @@ export const saveData = (data) => {
   };
 };
 
-export const saveDataLoading  = (isLoading) => {
+export const saveDataLoading = (isLoading) => {
   return {
     type: SAVE_DATA_LOADING,
     payload: isLoading,
   };
 };
-
 
 export const saveDataError = () => {
   return {
@@ -21,11 +28,29 @@ export const saveDataError = () => {
   };
 };
 
+export const addProduct = (data) => {
+  return {
+    type: ADD_PRODUCT_FULLFILLED,
+    payload: data,
+  };
+};
 
+export const addProductLoading = (isLoading) => {
+  return {
+    type: ADD_PRODUCT_LOADING,
+    payload: isLoading,
+  };
+};
+
+export const addProductError = () => {
+  return {
+    type: ADD_PRODUCT_REJECTED,
+  };
+};
 
 export const deleteData = (id) => {
-    return {
-        type: DELETE_DATA,
-        payload: id
-    };
-}
+  return {
+    type: DELETE_DATA,
+    payload: id,
+  };
+};

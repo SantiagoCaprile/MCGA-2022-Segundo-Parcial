@@ -1,9 +1,15 @@
 import React from 'react'
 import styles from './create.module.css'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { addProductThunk } from '../../store/products/thunks'
+import { useNavigate } from 'react-router-dom'
 
 
 const CreateProduct = () => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {
         register,
@@ -13,6 +19,8 @@ const CreateProduct = () => {
 
     const onSubmit = (data) => {
         console.log(data);
+        dispatch(addProductThunk(data));
+        navigate('/products');
     };
 
     console.log(errors);

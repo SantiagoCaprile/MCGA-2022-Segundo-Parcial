@@ -1,42 +1,70 @@
-import { SAVE_DATA_FULLFILLED, SAVE_DATA_LOADING, SAVE_DATA_REJECTED,  DELETE_DATA } from './types';
+import {
+  SAVE_DATA_FULLFILLED,
+  SAVE_DATA_LOADING,
+  SAVE_DATA_REJECTED,
+  ADD_PRODUCT_FULLFILLED,
+  ADD_PRODUCT_LOADING,
+  ADD_PRODUCT_REJECTED,
+  DELETE_DATA,
+} from "./types";
 
- const INITIAL_STATE = {
-   data: [],
-   isLoading: false,
-   isError: false 
- };
+const INITIAL_STATE = {
+  data: [],
+  isLoading: false,
+  isError: false,
+};
 
- const productsReducer = (state = INITIAL_STATE, action) => {
-   switch (action.type) {
-     case SAVE_DATA_FULLFILLED:
-       return {
-         ...state,
-         data: action.payload,
-         isError: false,
-       };
+const productsReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case SAVE_DATA_FULLFILLED:
+      return {
+        ...state,
+        data: action.payload,
+        isError: false,
+      };
 
-      case SAVE_DATA_LOADING:
+    case SAVE_DATA_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+
+    case SAVE_DATA_REJECTED:
+      return {
+        ...state,
+        isError: true,
+        isLoading: false,
+      };
+
+    case ADD_PRODUCT_FULLFILLED:
         return {
-          ...state,
-          isLoading: action.payload,
-        }
+            ...state,
+            data: [...state.data, action.payload],
+            isError: false,
+        };
 
-      case SAVE_DATA_REJECTED: 
+    case ADD_PRODUCT_LOADING:
         return {
-          ...state,
-          isError: true,
-          isLoading: false
-        }
+            ...state,
+            isLoading: action.payload,
+        };
 
-     case DELETE_DATA:
-       return {
-         ...state,
-         data: state.data.filter((item) => item.id !== action.payload),
-       };
+    case ADD_PRODUCT_REJECTED:
+        return {
+            ...state,
+            isError: true,
+            isLoading: false,
+        };
 
-     default:
-       return state;
-   }
- };
+    case DELETE_DATA:
+      return {
+        ...state,
+        data: state.data.filter((item) => item.id !== action.payload),
+      };
 
- export default productsReducer;
+    default:
+      return state;
+  }
+};
+
+export default productsReducer;
