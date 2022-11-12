@@ -1,49 +1,97 @@
-import React from 'react'
-import styles from './edit.module.css'
-import { useForm } from 'react-hook-form'
-
+import React from "react";
+import styles from "./edit.module.css";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 const EditProduct = () => {
+  const productsSelector = useSelector((state) => state.products);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+  const product = productsSelector.data.filter((product) => {
+    const id = window.location.pathname.split("/")[2];
+    return product._id === id;
+  })[0];
 
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      description: product.description,
+      category: product.category,
+    },
+  });
 
-    console.log(errors);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>Edit Product</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.form}>
-                    <label className={styles.label}>Name</label>
-                    <input className={styles.input} type="text" {...register("name", { required: true, maxLength: 30 })} />
-                    {errors.name && <span className={styles.error}>This field is required</span>}
-                    <label className={styles.label}>Price</label>
-                    <input className={styles.input} type="number" {...register("price", { required: true})} />
-                    {errors.price && <span className={styles.error}>This field is required</span>}
-                    <label className={styles.label}>Stock</label>
-                    <input className={styles.input} type="number" {...register("stock", { required: true})} />
-                    <label className={styles.label}>Description</label>
-                    <textarea className={styles.input} type="text" {...register("description", { required: true })} />
-                    {errors.description && <span className={styles.error}>This field is required</span>}
-                    <label className={styles.label}>Category</label>
-                    <select className={styles.input} {...register("category")}>
-                        <option value="computers">Computers</option>
-                        <option value="phones">Phones</option>
-                        <option value="accesories">Accesories</option>
-                    </select>
-                    <button className={styles.buttons} type="submit">Save</button>
-                </div>
-            </form>
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Edit Product</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.form}>
+          <label className={styles.label} htmlFor="name">
+            Name
+          </label>
+          <input
+            className={styles.input}
+            type="text"
+            id="name"
+            {...register("name", { required: true, maxLength: 30 })}
+          />
+          {errors.name && (
+            <span className={styles.error}>This field is required</span>
+          )}
+          <label className={styles.label} htmlFor="price">
+            Price
+          </label>
+          <input
+            className={styles.input}
+            type="number"
+            id="price"
+            {...register("price", { required: true })}
+          />
+          {errors.price && (
+            <span className={styles.error}>This field is required</span>
+          )}
+          <label className={styles.label} htmlFor="stock">
+            Stock
+          </label>
+          <input
+            className={styles.input}
+            type="number"
+            id="stock"
+            {...register("stock", { required: true })}
+          />
+          <label className={styles.label} htmlFor="description">
+            Description
+          </label>
+          <textarea
+            className={styles.input}
+            type="text"
+            id="description"
+            {...register("description", { required: true })}
+          />
+          {errors.description && (
+            <span className={styles.error}>This field is required</span>
+          )}
+          <label className={styles.label}>Category</label>
+          <select className={styles.input} {...register("category")}>
+            <option value="computers">Computers</option>
+            <option value="phones">Phones</option>
+            <option value="accesories">Accesories</option>
+          </select>
+          <button className={styles.buttons} type="submit">
+            Save
+          </button>
         </div>
-    )
-}
+      </form>
+    </div>
+  );
+};
 
-export default EditProduct
+export default EditProduct;
