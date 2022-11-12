@@ -5,6 +5,9 @@ import {
   ADD_PRODUCT_FULLFILLED,
   ADD_PRODUCT_LOADING,
   ADD_PRODUCT_REJECTED,
+  EDIT_PRODUCT_FULLFILLED,
+  EDIT_PRODUCT_LOADING,
+  EDIT_PRODUCT_REJECTED,
   DELETE_DATA,
 } from "./types";
 
@@ -46,6 +49,26 @@ export const addProductError = () => {
   return {
     type: ADD_PRODUCT_REJECTED,
   };
+};
+
+export const editProduct = (data) => {
+    return {
+        type: EDIT_PRODUCT_FULLFILLED,
+        payload: data,
+    };
+};
+
+export const editProductLoading = (isLoading) => {
+    return {
+        type: EDIT_PRODUCT_LOADING,
+        payload: isLoading,
+    };
+};
+
+export const editProductError = () => {
+    return {
+        type: EDIT_PRODUCT_REJECTED,
+    };
 };
 
 export const deleteData = (id) => {
