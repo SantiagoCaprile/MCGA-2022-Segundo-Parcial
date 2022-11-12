@@ -8,7 +8,9 @@ import {
   EDIT_PRODUCT_FULLFILLED,
   EDIT_PRODUCT_LOADING,
   EDIT_PRODUCT_REJECTED,
-  DELETE_DATA,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_LOADING,
+  DELETE_PRODUCT_REJECTED,
 } from "./types";
 
 export const saveData = (data) => {
@@ -71,9 +73,22 @@ export const editProductError = () => {
     };
 };
 
-export const deleteData = (id) => {
+export const deleteProduct = (id) => {
   return {
-    type: DELETE_DATA,
+    type: DELETE_PRODUCT,
     payload: id,
+  };
+};
+
+export const deleteProductLoading = (isLoading) => {
+  return {
+    type: DELETE_PRODUCT_LOADING,
+    payload: isLoading,
+  };
+};
+
+export const deleteProductError = () => {
+  return {
+    type: DELETE_PRODUCT_REJECTED,
   };
 };

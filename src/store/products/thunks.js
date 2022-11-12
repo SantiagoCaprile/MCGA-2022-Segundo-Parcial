@@ -8,6 +8,9 @@ import {
     editProduct,
     editProductLoading,
     editProductError,
+    deleteProduct,
+    deleteProductLoading,
+    deleteProductError,
 } from './actions'
 
 export const saveProducts = () => async (dispatch) => {
@@ -43,7 +46,6 @@ export const addProductThunk = (product) => async (dispatch) => {
 }
 
 export const editProductThunk = (product) => async (dispatch) => {
-    console.log("Al product thunk llegó:", product);
     try {
         dispatch(editProductLoading(true));
         const response = await fetch(`https://mcga-2022-backend-tm.vercel.app/api/products/${product._id}`, {
@@ -59,5 +61,19 @@ export const editProductThunk = (product) => async (dispatch) => {
         dispatch(editProductLoading(false));
     } catch (error) {
         dispatch(editProductError());
+    }
+}
+
+export const deleteProductThunk = (id) => async (dispatch) => {
+    try {
+        dispatch(deleteProductLoading(true));
+        const response = await fetch(`https://mcga-2022-backend-tm.vercel.app/api/products/${id}`, {
+            method: 'DELETE',
+        });
+        if (response.status !== 200) throw new Error('Error');
+        dispatch(deleteProduct(id));
+        dispatch(deleteProductLoading(false));
+    } catch (error) {
+        dispatch(deleteProductError());
     }
 }

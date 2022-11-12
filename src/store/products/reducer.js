@@ -5,7 +5,9 @@ import {
   ADD_PRODUCT_FULLFILLED,
   ADD_PRODUCT_LOADING,
   ADD_PRODUCT_REJECTED,
-  DELETE_DATA,
+  DELETE_PRODUCT,
+  DELETE_PRODUCT_LOADING,
+  DELETE_PRODUCT_REJECTED,
 } from "./types";
 
 const INITIAL_STATE = {
@@ -56,11 +58,26 @@ const productsReducer = (state = INITIAL_STATE, action) => {
             isLoading: false,
         };
 
-    case DELETE_DATA:
-      return {
-        ...state,
-        data: state.data.filter((item) => item.id !== action.payload),
-      };
+    case DELETE_PRODUCT:{
+        return {
+            ...state,
+            data: state.data.filter((item) => item._id !== action.payload),
+            isError: false,
+        };
+      }
+
+    case DELETE_PRODUCT_LOADING:
+        return {
+            ...state,
+            isLoading: action.payload,
+        };
+
+    case DELETE_PRODUCT_REJECTED:
+        return {
+            ...state,
+            isError: true,
+            isLoading: false,
+        };
 
     default:
       return state;
