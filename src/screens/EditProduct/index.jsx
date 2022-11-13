@@ -2,9 +2,14 @@ import React from "react";
 import styles from "./edit.module.css";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { editProductThunk } from "../../store/products/thunks";
 
 const EditProduct = () => {
   const productsSelector = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const product = productsSelector.data.filter((product) => {
     const id = window.location.pathname.split("/")[2];
@@ -26,8 +31,22 @@ const EditProduct = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    data._id = product._id;
+    dispatch(editProductThunk(data));
+    navigate('/products');
   };
+
+  if (productsSelector.isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (productsSelector.isError) {
+    return (
+      <div className={styles.container}>
+        ERROR
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>

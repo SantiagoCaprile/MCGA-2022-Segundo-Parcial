@@ -5,6 +5,9 @@ import {
   ADD_PRODUCT_FULLFILLED,
   ADD_PRODUCT_LOADING,
   ADD_PRODUCT_REJECTED,
+  EDIT_PRODUCT_FULLFILLED,
+  EDIT_PRODUCT_LOADING,
+  EDIT_PRODUCT_REJECTED,
   DELETE_PRODUCT,
   DELETE_PRODUCT_LOADING,
   DELETE_PRODUCT_REJECTED,
@@ -52,6 +55,31 @@ const productsReducer = (state = INITIAL_STATE, action) => {
         };
 
     case ADD_PRODUCT_REJECTED:
+        return {
+            ...state,
+            isError: true,
+            isLoading: false,
+        };
+
+    case EDIT_PRODUCT_FULLFILLED:
+        return {
+            ...state,
+            data: state.data.map((product) => {
+                if (product._id === action.payload._id) {
+                    return action.payload;
+                }
+                return product;
+            }),
+            isError: false,
+        };
+
+    case EDIT_PRODUCT_LOADING:
+        return {
+            ...state,
+            isLoading: action.payload,
+        };
+
+    case EDIT_PRODUCT_REJECTED:
         return {
             ...state,
             isError: true,
