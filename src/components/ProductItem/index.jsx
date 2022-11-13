@@ -21,9 +21,9 @@ const ProductItem = ({ product }) => {
     return (
         <div className={styles.item}>
             <p className={styles.title}>{product.name}</p>
-            <p>{product.description}</p>
-            <p>${product.price}</p>
-            <p>{product.stock} units</p>
+            <p className={styles.itemData}>{product.description}</p>
+            <p className={styles.itemData}>${product.price}</p>
+            <p className={styles.itemData}>{product.stock} units</p>
             <div className={styles.options}>
                 <Link to={`/edit/${product._id}`} className={styles.buttons + " material-icons"}>
                     edit
