@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './products.module.css'
 import ProductItem from '../../components/ProductItem'
+import Spinner from '../../components/Spinner'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { saveProducts } from '../../store/products/thunks'
@@ -19,7 +20,7 @@ const Products = () => {
     if (productsSelector.isLoading) {
         return(
             <div className={styles.container}>
-                <span className={styles.loader}></span>
+                <Spinner />
             </div>
         )
     }

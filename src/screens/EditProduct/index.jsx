@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./edit.module.css";
+import Spinner from "../../components/Spinner";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -36,14 +37,19 @@ const EditProduct = () => {
     navigate('/products');
   };
 
-  if (productsSelector.isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
   if (productsSelector.isError) {
     return (
       <div className={styles.container}>
+        <span className="material-icons">warning</span>
         ERROR
+      </div>
+    );
+  }
+
+  if (productsSelector.isLoading) {
+    return (
+      <div className={styles.container}>
+        <Spinner />
       </div>
     );
   }
