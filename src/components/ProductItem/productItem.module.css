@@ -1,4 +1,4 @@
-.item{
+/* .item{
     display: flex;
     flex-direction: row;
     width: 70vh;
@@ -9,11 +9,41 @@
     font-weight: bold;
     align-items: center;
     border-bottom: 1px solid black;
+} */
+.item{
+    display: flex;
+    flex-direction: column;
+    width: 25vh;
+    height: 30vh;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    justify-content: space-around;
+    background-color: lightgray;
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    font-size: 20px;
+    font-weight: bold;
+    align-items: center;
+    border-bottom: 2px solid black;
 }
 .item:hover{
     background-color: rgb(38, 36, 36);
     color: white;
+    border-bottom: 2px solid white;
     transition: 0.3s;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin: 20px 0px;
+}
+
+p{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 3px 0px;
 }
 
 .buttons{

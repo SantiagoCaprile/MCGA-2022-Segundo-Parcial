@@ -1,10 +1,19 @@
 .container{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     width: 100%;
     min-height: 90vh;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
 }
 
 .title{
@@ -16,9 +25,10 @@
 .header{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0px 5vh;
-    width: 60vh;
+    justify-content: space-around;
+    border-radius: 15px;
+    padding: 0px;
+    width: 100%;
     height: 7vh;
     background-color: rgb(229, 247, 30);
 }
@@ -44,9 +54,11 @@
 
 .list{
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 -10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100vh;
+    justify-content: space-around;
 }
 
 .loader {

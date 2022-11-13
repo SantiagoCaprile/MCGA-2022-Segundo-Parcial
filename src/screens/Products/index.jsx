@@ -26,16 +26,18 @@ const Products = () => {
 
   return (
         <div className={styles.container}>
-            <div className={styles.header}>
-                <h1 className={styles.title}>Products</h1>
-                <Link to={"/new"} className={styles.buttons}>Add Product </Link>
-            </div>
-            <div className={styles.list}>
-                {
-                productsSelector.data.map((product) => {
-                    return <ProductItem product={product} key={product._id} />
-                })
-                }
+            <div className={styles.content}>
+                <div className={styles.header}>
+                    <h1 className={styles.title}>Products</h1>
+                    <Link to={"/new"} className={styles.buttons}>Add Product </Link>
+                </div>
+                <div className={styles.list}>
+                    {
+                    productsSelector.data.map((product) => {
+                        return <ProductItem product={product} key={product._id} />
+                    })
+                    }
+                </div>
             </div>
         </div>
   )
