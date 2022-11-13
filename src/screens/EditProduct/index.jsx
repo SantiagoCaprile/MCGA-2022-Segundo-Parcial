@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./edit.module.css";
 import Spinner from "../../components/Spinner";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch  } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { editProductThunk } from "../../store/products/thunks";
 
@@ -34,7 +33,7 @@ const EditProduct = () => {
   const onSubmit = (data) => {
     data._id = product._id;
     dispatch(editProductThunk(data));
-    navigate('/products');
+    navigate("/products");
   };
 
   if (productsSelector.isError) {

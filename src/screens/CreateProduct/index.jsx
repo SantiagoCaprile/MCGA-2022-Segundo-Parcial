@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './create.module.css'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { addProductThunk } from '../../store/products/thunks'
 import { useNavigate } from 'react-router-dom'
+import Spinner from '../../components/Spinner'
 
 
 const CreateProduct = () => {
+    const productsSelector = useSelector((state) => state.products)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -18,12 +20,25 @@ const CreateProduct = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-        dispatch(addProductThunk(data));
-        navigate('/products');
+        dispatch(addProductThunk(data))
+        navigate('/products')
     };
 
-    console.log(errors);
+    if (productsSelector.isError) {
+        return (
+          <div className={styles.container}>
+            <span className="material-icons">warning</span>
+            ERROR
+          </div>
+        );
+      }
+    if (productsSelector.isLoading) {
+        return (
+            <div className={styles.container}>
+            <Spinner />
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>

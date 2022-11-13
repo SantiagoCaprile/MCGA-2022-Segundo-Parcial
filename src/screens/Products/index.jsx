@@ -24,18 +24,17 @@ const Products = () => {
             </div>
         )
     }
-
-    if (productsSelector.isError) {
-        return(
-            <div className={styles.container}>
-                <div className={styles.errorBox}>
-                    <span className={styles.error + " material-icons"}>warning</span>
-                    <p>No se pudieron cargar los productos correctamente. </p>
-                    <p>Intentelo mas tarde</p>
-                </div>
-            </div>
-        )
-    }
+    // if (productsSelector.isError) {
+    //     return(
+    //         <div className={styles.container}>
+    //             <div className={styles.errorBox}>
+    //                 <span className={styles.error + " material-icons"}>warning</span>
+    //                 <p>No se pudieron cargar los productos correctamente. </p>
+    //                 <p>Intentelo mas tarde</p>
+    //             </div>
+    //         </div>
+    //     )
+    // }
 
   return (
         <div className={styles.container}>
