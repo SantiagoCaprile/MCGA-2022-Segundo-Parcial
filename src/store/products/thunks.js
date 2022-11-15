@@ -37,7 +37,7 @@ export const addProductThunk = (product) => async (dispatch) => {
             body: JSON.stringify(product),
         });
         const productResponse = await response.json();
-        if (response.status !== 200) throw new Error('Error');
+        if (response.status !== 201) throw new Error('Error');
         dispatch(addProduct(productResponse));
         dispatch(addProductLoading(false));
     } catch (error) {
